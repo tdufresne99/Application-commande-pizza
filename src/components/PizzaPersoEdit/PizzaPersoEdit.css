@@ -1,0 +1,16 @@
+.listeIngredients {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pizzaEditImgs {
+    margin: 32px;
+    display: grid;
+}
+
+.pizzaEditIngreImg{
+    width: 30%;
+    grid-column: 1;
+    grid-row: 1;
+}

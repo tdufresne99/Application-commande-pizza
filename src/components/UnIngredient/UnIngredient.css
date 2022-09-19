@@ -1,0 +1,21 @@
+.liIngredient{
+    padding: 10px;
+}
+.choixIngredient{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.nomIngredient{
+    display: inline;
+}
+.checkIngredient{
+    display: inline;
+}
+.imgIngredient{
+    display: block;
+    position: absolute;
+    max-width: 80%;
+    max-height: 50%;
+    bottom: 32px;
+    left:32px;
+}

@@ -1,0 +1,13 @@
+.unePizza{
+    margin-bottom: 5%;
+    display: block;
+    text-align: left;
+}
+.imgs{
+    display: grid;
+}
+.imgs img {
+    width: 30%;
+    grid-column: 1;
+    grid-row: 1;
+}
