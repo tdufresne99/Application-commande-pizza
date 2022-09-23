@@ -1,19 +1,37 @@
 import './App.css';
-import logo from './logo.svg';
-import {useState} from 'react';
 import Titre from './components/Titre/Titre';
-import PizzaPersoEdit from './components/PizzaPersoEdit/PizzaPersoEdit';
+import Login from './components/Login/Login';
 import LesPizzasSaved from './components/LesPizzasSaved/LesPizzasSaved';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
 
-  
+  const saveUserName = (nomUser) => {
+    setUserName(nomUser);
+  };
+
+  const [userName, setUserName] = useState('');
+
+  const routes = userName!=='' ? [
+    {
+        path:'/',
+        element: <div className="App">
+                    <Titre/>
+                    <LesPizzasSaved/>
+                  </div>,
+    },
+  ] : [
+    {
+        path: '/',
+        element:  <div className="App">
+                    <Login saveUser={(nomUser) => saveUserName(nomUser)}/>
+                  </div>,
+    }
+  ];
 
   return (
-    <div className="App">
-      <Titre/>
-      <LesPizzasSaved/>
-    </div>
+    <RouterProvider router={createBrowserRouter(routes)}/>
   );
 }
 
