@@ -8,7 +8,7 @@ export const unePizzaDetailLoader = ({params}) => {
     // const maPizza = lesPizzas[0];
     // return maPizza;
 
-    console.log(params);
+    console.log('ICI', params);
     const monIndex = +params.pizzaId;
     return monIndex;
 };

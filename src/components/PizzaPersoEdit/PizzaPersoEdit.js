@@ -7,21 +7,21 @@ import LesPizzasSaved from '../LesPizzasSaved/LesPizzasSaved';
 import { useLocation, Navigate } from 'react-router-dom';
 
 
+const lesIngredientsInit = [
+    {nom:"Fromage", img:"fromage", checked: false},
+    {nom:"Tomates", img:"tomate", checked: false},
+    {nom:"Piments Verts", img:"pimentVert", checked: false},
+    {nom:"Piments Rouges", img:"pimentRouge", checked: false},
+    {nom:"Piments Jaunes", img:"pimentJaune", checked: false},
+    {nom:"Olives Vertes", img:"oliveVerte", checked: false},
+    {nom:"Olives Noires", img:"oliveNoire", checked: false},
+    {nom:"Oignons Rouges", img:"oignonRouge", checked: false},
+    {nom:"Oignons Blancs", img:"oignonBlanc", checked: false},
+    {nom:"Champignons", img:"champignon", checked: false},
+    {nom:"Ananas", img:"ananas", checked: false},
+];
 const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
     const location = useLocation();
-    const lesIngredientsInit = [
-        {nom:"Fromage", img:"fromage", checked: false},
-        {nom:"Tomates", img:"tomate", checked: false},
-        {nom:"Piments Verts", img:"pimentVert", checked: false},
-        {nom:"Piments Rouges", img:"pimentRouge", checked: false},
-        {nom:"Piments Jaunes", img:"pimentJaune", checked: false},
-        {nom:"Olives Vertes", img:"oliveVerte", checked: false},
-        {nom:"Olives Noires", img:"oliveNoire", checked: false},
-        {nom:"Oignons Rouges", img:"oignonRouge", checked: false},
-        {nom:"Oignons Blancs", img:"oignonBlanc", checked: false},
-        {nom:"Champignons", img:"champignon", checked: false},
-        {nom:"Ananas", img:"ananas", checked: false},
-    ];
 
     const [lesIngredients, setLesIngredients] = useState(lesIngredientsInit);
 
@@ -78,14 +78,14 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
             <ul className='listeIngredients'>
                     {lesIngredients.map(function(unIngredient, i){
                         return (
-                            <UnIngredient key={i} ingredient={unIngredient} checkFn={modifierCheckedIngredient}/>
+                            <UnIngredient key={'ing' + unIngredient.nom} ingredient={unIngredient} checkFn={modifierCheckedIngredient}/>
                         );
                     })}
             </ul>
             <div className='pizzaEditImgs'>
                 <PatePizza/>
                 {lesIngredients.map(function(unIngredient, i){
-                    return unIngredient.checked ? <img key={i} className='pizzaEditIngreImg' src={"/Img/pizza_"+ unIngredient.img +".png"}></img> : '';
+                    return unIngredient.checked ? <img key={unIngredient.nom} className='pizzaEditIngreImg' src={"/Img/pizza_"+ unIngredient.img +".png"} alt={unIngredient.nom}></img> : '';
                 })}
             </div>
         </>

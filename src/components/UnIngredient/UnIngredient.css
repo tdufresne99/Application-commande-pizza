@@ -1,5 +1,6 @@
 .liIngredient{
     padding: 10px;
+    margin-left: 10px;
 }
 .choixIngredient{
     display: flex;
@@ -7,6 +8,7 @@
 }
 .nomIngredient{
     display: inline;
+    padding: 5px;
 }
 .checkIngredient{
     display: inline;

@@ -25,8 +25,11 @@ function App() {
   };
 
   const [userName, setUserName] = useState('');
-
-  const routes = userName !== '' ? [
+  const authentifierUser = () => {
+    const username = userName.trim();
+    return username
+  }
+  const routes = authentifierUser !== '' ? [
     
     // Si l'utilisateur est connecté ---------->
 
@@ -47,7 +50,7 @@ function App() {
               path: ':pizzaId',
               element: <UnePizzaDetail lesPizzas={lesPizzasSaved}/>,
               loader: unePizzaDetailLoader,
-              // errorElement: <Navigate to="/pizzas"/>
+              errorElement: <Navigate to="/pizzas"/>
             },
             {
               path: 'creer',

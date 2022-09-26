@@ -14,8 +14,8 @@ const LesPizzasSaved = ({lesPizzas}) => {
                 <ul>
                     {lesPizzas.map((unePizza, i) => {
                         return(
-                            <li key={i} className="unePizzaSaved">
-                                <Link to={'/pizzas/'+i}><UnePizzaSaved key={i} pizza={unePizza}/></Link>
+                            <li key={unePizza.nom} className="unePizzaSaved">
+                                <Link to={'/pizzas/'+i}><UnePizzaSaved pizza={unePizza}/></Link>
                             </li>
                         );
                     })}
