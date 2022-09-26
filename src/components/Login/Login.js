@@ -12,7 +12,6 @@ const Login = ({saveUser}) => {
 
     return (
         <>
-            <h1 className="titre">Pizza sur mesure!</h1>
             <h2>Authentification</h2>
             <h3>Entrez votre nom</h3>
             <input className='inputLogin' type="text" value={nomUser} onChange={(e) => setNomUser(e.target.value)} placeholder="Votre nom..."/>

@@ -12,3 +12,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul {
+  list-style-type: none;
+}
+.thumb {
+  height: 220px;
+}
+
+article {
+  text-align: center;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+article h1 {
+  text-transform: capitalize;
+}
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+}
+[ui-view].ng-enter {
+  opacity: 0;
+}
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+[ui-view].ng-leave {
+  opacity: 1;
+}
+[ui-view].ng-leave-active {
+  opacity: 0;
+}
+.nav-pills{
+  margin-left: 32px;
+}
+.nav-pills>li.active>a{
+  background-color: darkgreen;
+}
+.nav-pills>li>a{
+  background-color: darkgreen;
+  color: white;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus{
+  background-color: rgb(140, 200, 140);
+  color: rgb(90, 130, 100);
+}
+.nav-pills>li.active>a:hover{
+  background-color: rgb(140, 200, 140);
+  color: rgb(90, 130, 100);
+}
+.nav-pills>li>a:hover{
+  background-color: rgb(40, 122, 35);
+}

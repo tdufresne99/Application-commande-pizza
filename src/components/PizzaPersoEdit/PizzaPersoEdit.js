@@ -66,6 +66,7 @@ const PizzaPersoEdit = ({addPizza}) => {
             };
         });
         const newPizza = {nom:titrePizza, ingredients:lesIngredientsPerso, imgs:lesImgsPerso};
+        console.log(newPizza);
         addPizza(newPizza);
     };
         
@@ -80,8 +81,7 @@ const PizzaPersoEdit = ({addPizza}) => {
                     })}
             </ul>
             <div className='pizzaEditImgs'>
-                <img className='pizzaEditIngreImg' src='./Img/pizza_pate.png'></img>
-                <img className='pizzaEditIngreImg' src='./Img/pizza_sauce.png'></img>
+                <PatePizza/>
                 {lesIngredients.map(function(unIngredient, i){
                     return unIngredient.checked ? <img key={i} className='pizzaEditIngreImg' src={"/Img/pizza_"+ unIngredient.img +".png"}></img> : '';
                 })}

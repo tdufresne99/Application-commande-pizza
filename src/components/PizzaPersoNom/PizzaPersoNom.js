@@ -21,10 +21,10 @@ const PizzaPersoNom = ({reset, save, estSelect}) => {
     };
     return (
         <>
-            <h2 className='titrePizzaPerso'>{titrePizza}</h2>
             <input className='inputPizzaPerso' type="text" value={titrePizza} onChange={(e) => setTitrePizza(e.target.value)} placeholder="Nommez votre pizza!"/>
             <button className='sauvegarder' disabled={peutSave()} onClick={() => {savePizza()}}>Sauvegarder</button>
             <button className='annuler' onClick={resetPizza}>Annuler</button>
+            <h2 className='titrePizzaPerso'>{titrePizza}</h2>
         </>
     );
 };

@@ -1,28 +1,27 @@
 import {useState} from 'react';
 import UnePizzaSaved from '../UnePizzaSaved/UnePizzaSaved';
 import PizzaPersoEdit from '../PizzaPersoEdit/PizzaPersoEdit';
+import { Link, Outlet, useLoaderData } from 'react-router-dom';
 
-const LesPizzasSaved = ({newPizza}) => {
-
-    const lesPizzasDefauts = [
-        {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"]},
-        {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"]},
-        {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"]},
-    ];
-
-    const [lesPizzasSaved, setLesPizzasSaved] = useState(lesPizzasDefauts);
-
+const LesPizzasSaved = ({lesPizzas}) => {
+    {console.log(lesPizzas)}
     return (
-        <>
-            <PizzaPersoEdit addPizza={(laPizza) => setLesPizzasSaved((currentPizzaSaved) => {return [...currentPizzaSaved, laPizza]})}/>
-            <ul>
-                {lesPizzasSaved.map(function(unePizza,i){
-                    return(
-                        <UnePizzaSaved key={i} pizza={unePizza}/>
-                    );
-                })}
-            </ul>
-        </>
+        <div>
+            <div className='row'>
+                <Outlet/>
+            </div>
+            <div className="row">
+                <ul>
+                    {lesPizzas.map((unePizza, i) => {
+                        return(
+                            <li key={i}>
+                                <Link to={'/pizzas/'+i}><UnePizzaSaved key={i} pizza={unePizza}/></Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        </div>
     );
 };
 

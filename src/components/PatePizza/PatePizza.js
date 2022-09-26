@@ -1,10 +1,10 @@
-import './PatePizza.css';
+import '../PizzaPersoEdit/PizzaPersoEdit.css';
 
 const PatePizza = () => {
     return (
         <>
-            <li className='liIngredient'><img className='imgIngredient' src='./Img/pizza_pate.png'></img></li>
-            <li className='liIngredient'><img className='imgIngredient' src='./Img/pizza_sauce.png'></img></li>
+            <img className='pizzaEditIngreImg' src='../Img/pizza_pate.png'></img>
+            <img className='pizzaEditIngreImg' src='../Img/pizza_sauce.png'></img>
         </>
     );
 };
