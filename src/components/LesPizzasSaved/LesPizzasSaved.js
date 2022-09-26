@@ -2,9 +2,9 @@ import {useState} from 'react';
 import UnePizzaSaved from '../UnePizzaSaved/UnePizzaSaved';
 import PizzaPersoEdit from '../PizzaPersoEdit/PizzaPersoEdit';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import './LesPizzasSaved.css';
 
 const LesPizzasSaved = ({lesPizzas}) => {
-    {console.log(lesPizzas)}
     return (
         <div>
             <div className='row'>
@@ -14,7 +14,7 @@ const LesPizzasSaved = ({lesPizzas}) => {
                 <ul>
                     {lesPizzas.map((unePizza, i) => {
                         return(
-                            <li key={i}>
+                            <li key={i} className="unePizzaSaved">
                                 <Link to={'/pizzas/'+i}><UnePizzaSaved key={i} pizza={unePizza}/></Link>
                             </li>
                         );

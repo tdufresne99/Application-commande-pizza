@@ -1,0 +1,10 @@
+.unePizzaSaved {
+    color: black;
+    margin: 32px;
+    padding: 32px;
+    background-color: rgba(0, 100, 0, 0.3);
+    border: 3px solid black;
+}
+.unePizzaSaved a {
+    color: black;
+}

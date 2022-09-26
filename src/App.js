@@ -5,16 +5,24 @@ import LesPizzasSaved, {lesPizzasSavedLoader} from './components/LesPizzasSaved/
 import Layout from './components/Layout/Layout';
 import UnePizzaDetail, {unePizzaDetailLoader} from './components/UnePizzaDetail/UnePizzaDetail';
 import PizzaPersoEdit from './components/PizzaPersoEdit/PizzaPersoEdit';
-import { RouterProvider, createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate, Outlet, useNavigate, redirect } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
+
   const lesPizzasDefauts = [
     {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"]},
     {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"]},
     {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"]},
   ];
+
   const [lesPizzasSaved, setLesPizzasSaved] = useState(lesPizzasDefauts);
+
+
+  const savePizza = (newPizza) => {
+    console.log(newPizza);
+    setLesPizzasSaved(currentPizzasSaved => [newPizza, ...currentPizzasSaved]);
+  };
 
   const [userName, setUserName] = useState('');
 
@@ -43,7 +51,7 @@ function App() {
             },
             {
               path: 'creer',
-              element: <PizzaPersoEdit addPizza={(newPizza) => setLesPizzasSaved((currentPizzaSaved) => {return [...currentPizzaSaved, newPizza]})}/>,
+              element: <PizzaPersoEdit addPizza={(newPizza) => savePizza(newPizza)} nbPizzas={lesPizzasSaved.length}/>,
             },
           ],
         },

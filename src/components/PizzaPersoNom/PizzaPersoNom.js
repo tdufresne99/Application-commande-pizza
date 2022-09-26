@@ -1,8 +1,10 @@
 import '../PizzaPersoNom/PizzaPersoNom.css';
 import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-const PizzaPersoNom = ({reset, save, estSelect}) => {
+const PizzaPersoNom = ({reset, save, estSelect, nbPizzas}) => {
+    const navigate = useNavigate();
     const texteInit = '';
 
     const [titrePizza, setTitrePizza] = useState('');
@@ -13,6 +15,8 @@ const PizzaPersoNom = ({reset, save, estSelect}) => {
     const savePizza = () => {
         console.log(titrePizza);
         save(titrePizza);
+        resetPizza();
+        navigate("/pizzas/0");
     };
     const peutSave = () => {
         const peutSave = !(estSelect() && titrePizza !== '');

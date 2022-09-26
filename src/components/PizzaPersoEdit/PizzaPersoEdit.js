@@ -4,10 +4,11 @@ import PizzaPersoNom from '../PizzaPersoNom/PizzaPersoNom';
 import PatePizza from '../PatePizza/PatePizza';
 import './PizzaPersoEdit.css';
 import LesPizzasSaved from '../LesPizzasSaved/LesPizzasSaved';
+import { useLocation, Navigate } from 'react-router-dom';
 
 
-const PizzaPersoEdit = ({addPizza}) => {
-
+const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
+    const location = useLocation();
     const lesIngredientsInit = [
         {nom:"Fromage", img:"fromage", checked: false},
         {nom:"Tomates", img:"tomate", checked: false},
@@ -72,7 +73,8 @@ const PizzaPersoEdit = ({addPizza}) => {
         
     return (
         <>
-            <PizzaPersoNom reset={resetPizza} save={enregistrerPizza} estSelect={verifierIngredientSelection}/>
+            {(location.pathname !== "/pizzas/creer") ? <Navigate to="/pizzas/0" replace/> : ''}
+            <PizzaPersoNom reset={resetPizza} save={enregistrerPizza} estSelect={verifierIngredientSelection} nbPizzas={nbPizzas}/>
             <ul className='listeIngredients'>
                     {lesIngredients.map(function(unIngredient, i){
                         return (

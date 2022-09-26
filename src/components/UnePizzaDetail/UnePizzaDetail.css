@@ -1,0 +1,7 @@
+.pizzaDetail {
+    margin: 32px;
+    padding: 32px;
+    color: white;
+    background-color: darkgreen;
+    border: 6px solid black;
+}

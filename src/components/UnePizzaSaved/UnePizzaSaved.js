@@ -21,7 +21,7 @@ const UnePizzaSaved = ({pizza}) => {
                 <PatePizza/>
                 {pizza.ingredients.map(function(ingredient,i){
                     return(
-                        <img key={i} src={src(i)}></img>
+                        <img key={i} src={src(i)} alt={ingredient.img}></img>
                     );
                 })}
             </div>
