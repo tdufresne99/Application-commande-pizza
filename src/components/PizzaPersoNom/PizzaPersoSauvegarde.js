@@ -3,7 +3,7 @@ import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const PizzaPersoNom = ({reset, save, estSelect, nbPizzas}) => {
+const PizzaPersoSauvegarde = ({reset, save, estSelect}) => {
     const navigate = useNavigate();
     const texteInit = '';
 
@@ -19,7 +19,7 @@ const PizzaPersoNom = ({reset, save, estSelect, nbPizzas}) => {
         navigate("/pizzas/0");
     };
     const peutSave = () => {
-        const peutSave = !(estSelect() && titrePizza !== '');
+        const peutSave = !(estSelect() && titrePizza.trim() !== '');
         return peutSave;
 
     };
@@ -33,4 +33,4 @@ const PizzaPersoNom = ({reset, save, estSelect, nbPizzas}) => {
     );
 };
 
-export default PizzaPersoNom;
+export default PizzaPersoSauvegarde;

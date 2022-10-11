@@ -2,7 +2,7 @@ import Navigation from '../Navigation/Navigation';
 import {Outlet, Navigate, useLocation} from 'react-router-dom';
 import Titre from '../Titre/Titre';
 
-const Layout = () => {
+const Layout = ({nbItems}) => {
     const location = useLocation();
     return (
         <div className="container-fluid">
@@ -11,7 +11,9 @@ const Layout = () => {
 
             <Navigation links={[
                 {name: 'Liste des Pizzas', url: '/pizzas'},
-                {name: 'Créez votre Pizza', url: '/pizzas/creer'}
+                {name: 'Créez votre Pizza', url: '/pizzas/creer'},
+                {name: 'Panier ('+nbItems+')', url: '/panier'},
+                {name: 'Commandes', url: '/commandes'},
             ]}/>
             <main>
                 <Outlet/>
