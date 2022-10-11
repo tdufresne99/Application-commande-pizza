@@ -12,7 +12,7 @@ const Panier = ({panier, sousTotal, viderPanier, passerCommande}) => {
                 })}
             </ul>
             <h3>Sous-Total = {sousTotal}$</h3>
-            <button className='passerCommande' onClick={()=>passerCommande(commande)}>Passer une commande</button>
+            <button disabled={(!panier[0])} className='passerCommande' onClick={()=>passerCommande(commande)}>Passer une commande</button>
             <button className='viderPanier' onClick={viderPanier}>Vider le panier</button>
         </>
     );

@@ -2,7 +2,7 @@ import './App.css';
 import Titre from './components/Titre/Titre';
 import Login from './components/Login/Login';
 import Panier from './components/Panier/Panier';
-import Commandes from './components/Commandes/Commandes';
+import LesCommandes from './components/LesCommandes/LesCommandes';
 import LesPizzasSaved, {lesPizzasSavedLoader} from './components/LesPizzasSaved/LesPizzasSaved';
 import Layout from './components/Layout/Layout';
 import PizzaPersoEdit from './components/PizzaPersoEdit/PizzaPersoEdit';
@@ -41,7 +41,10 @@ function App() {
     lePanier.map(item => {
       if(newItem.nom === item.nom) {
         existe = true;
-        newItem.qt += 1;
+        console.log(item.qt);
+        item.qt++;
+        console.log(item.qt);
+
       }
     })
     if(!existe){
@@ -64,6 +67,7 @@ function App() {
 
   const passerCommande = (newCommande) => {
     console.log(newCommande);
+    newCommande.prix = sousTotalPanier;
     setLesCommandes(currentCommandes => [...currentCommandes, newCommande]);
     viderPanier();
   };
@@ -98,7 +102,7 @@ function App() {
       children: [ 
         {
           path: 'pizzas',
-          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier(newPizza)} panier={lePanier} sousTotalPanier={sousTotalPanier} viderPanier={()=>viderPanier()} passerCommande={(commande)=>passerCommande(commande)}/>,
+          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier((JSON.parse(JSON.stringify(newPizza))))} panier={lePanier} sousTotalPanier={sousTotalPanier} viderPanier={()=>viderPanier()} passerCommande={(commande)=>passerCommande(commande)}/>,
           children: [
             {
               path: ':pizzaId',
@@ -118,7 +122,7 @@ function App() {
         },
         {
           path: 'commandes',
-          element: <Commandes lesCommandes={lesCommandes}/>,
+          element: <LesCommandes lesCommandes={lesCommandes}/>,
         },
       ]
     }
