@@ -12,7 +12,6 @@ const Layout = ({nbItems}) => {
             <Navigation links={[
                 {name: 'Liste des Pizzas', url: '/pizzas'},
                 {name: 'Créez votre Pizza', url: '/pizzas/creer'},
-                {name: 'Panier ('+nbItems+')', url: '/panier'},
                 {name: 'Commandes', url: '/commandes'},
             ]}/>
             <main>

@@ -12,9 +12,9 @@ import { useState } from 'react';
 
 
 const lesPizzasDefauts = [
-  {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"], prix: 37},
-  {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"], prix: 26},
-  {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"], prix: 38},
+  {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"], prix: 37, qt:1},
+  {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"], prix: 26, qt:1},
+  {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"], prix: 38, qt:1},
 ];
 
 function App() {
@@ -30,29 +30,42 @@ function App() {
 
   // Le panier (state)
   const [lePanier, setLePanier] = useState([])
+  const [nbItemPanier, setNbItemPanier] = useState(0);
+  const [sousTotalPanier, setSousTotalPanier] = useState(0);
 
-  const savePanier = (newItem) => {
-    console.log(newItem);
-    newItem.qt = 6;
+  const updatePanier = (newItem) => {
+    setSousTotalPanier((current)=>current+newItem.prix);
+    setNbItemPanier((current)=>current+1);
+
     let existe = false;
-    const newPanier = lePanier.map(item => {
-      if(newItem.nom === item.nom){
-        item.qt++;
+    lePanier.map(item => {
+      if(newItem.nom === item.nom) {
         existe = true;
-      } 
-      return item;
+        newItem.qt += 1;
+      }
     })
-    if(existe) setLePanier(newPanier);
-    else setLePanier(currentPanier => [newItem, ...currentPanier]);
+    if(!existe){
+      setLePanier(currentPanier => [newItem, ...currentPanier]);
+    }
   };
+
+  const viderPanier = () => {
+    // lePanier.map(item => {
+    //   item.qt = 1;
+    // });
+    setLePanier([]);
+    setNbItemPanier(0);
+    setSousTotalPanier(0);
+  }
 
 
   // Liste des commandes sauvegardées (state)
-  const [lesCommandes, setLesCommandes] = useState()
+  const [lesCommandes, setLesCommandes] = useState([]);
 
-  const saveCommande = (newCommande) => {
+  const passerCommande = (newCommande) => {
     console.log(newCommande);
-    setLesCommandes(currentCommandes => [newCommande, ...currentCommandes]);
+    setLesCommandes(currentCommandes => [...currentCommandes, newCommande]);
+    viderPanier();
   };
 
 
@@ -81,11 +94,11 @@ function App() {
 
     { // Page d'accueil du site: le Titre, la Navigation et la Liste des Pizzas Saved.
       path:'/',
-      element: <Layout nbItems={lePanier.length}/>,
+      element: <Layout nbItems={nbItemPanier}/>,
       children: [ 
         {
           path: 'pizzas',
-          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => savePanier(newPizza)}/>,
+          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier(newPizza)} panier={lePanier} sousTotalPanier={sousTotalPanier} viderPanier={()=>viderPanier()} passerCommande={(commande)=>passerCommande(commande)}/>,
           children: [
             {
               path: ':pizzaId',
@@ -104,12 +117,8 @@ function App() {
           element: <Navigate to="/pizzas"/>,
         },
         {
-          path: 'panier',
-          element: <Panier panier={lePanier}/>,
-        },
-        {
           path: 'commandes',
-          element: <Commandes/>,
+          element: <Commandes lesCommandes={lesCommandes}/>,
         },
       ]
     }

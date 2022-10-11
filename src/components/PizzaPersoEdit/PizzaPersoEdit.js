@@ -71,7 +71,7 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
                 lesImgsPerso = [...lesImgsPerso, unIngredient.img];
             };
         });
-        const newPizza = {nom:titrePizza, ingredients:lesIngredientsPerso, imgs:lesImgsPerso, prix:prixTotal};
+        const newPizza = {nom:titrePizza, ingredients:lesIngredientsPerso, imgs:lesImgsPerso, prix:prixTotal, qt:1};
         console.log(newPizza);
         addPizza(newPizza);
     };
@@ -97,7 +97,7 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
                     }
                 })}
             </ul>
-            <h4 class='prixTotal'>Prix total: {prixTotal}$</h4>
+            <h4 className='prixTotal'>Prix total: {prixTotal}$</h4>
             <div className='pizzaEditImgs'>
                 <PatePizza/>
                 {lesIngredients.map(function(unIngredient, i){
