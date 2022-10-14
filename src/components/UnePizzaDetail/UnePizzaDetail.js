@@ -2,18 +2,7 @@ import PatePizza from '../PatePizza/PatePizza';
 import { useParams } from 'react-router-dom';
 import '../UnePizzaDetail/UnePizzaDetail.css';
 
-// export const unePizzaDetailLoader = ({params}) => {
-//     // const nbPizzas = lesPizzas.length - 1;
-//     // console.log(lesPizzas[0]);
-//     // const maPizza = lesPizzas[0];
-//     // return maPizza;
-
-//     console.log('ICI', params);
-//     const monIndex = +params.pizzaId;
-//     return monIndex;
-// };
-
-const UnePizzaDetail = ({lesPizzas}) => {
+const UnePizzaDetail = ({lesPizzas, addPanier}) => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     const {pizzaId} = useParams();
     console.log(pizzaId);
@@ -24,9 +13,9 @@ const UnePizzaDetail = ({lesPizzas}) => {
     };
 
     return (
-        <div id='pizzaTop' className='pizzaDetail'>
-            <h2>{maPizza.nom}</h2>
-            <h2>{maPizza.prix}$</h2>
+        <div className='pizzaDetail'>
+            <h3 className='nomPizza'>{maPizza.nom}</h3>
+            <p className='prix'>{maPizza.prix.toFixed(2)}$</p>
             <div className='imgs'>
                 <PatePizza/>
                 {maPizza.ingredients.map(function(ingredient,i){
@@ -35,13 +24,14 @@ const UnePizzaDetail = ({lesPizzas}) => {
                     );
                 })}
             </div>
-            <ul>
+            <ul className='ingrListeDetail'>
                 {maPizza.ingredients.map(function(ingredient){
                     return(
                         <li key={ingredient}>{ingredient}</li>
                     );
                 })}
             </ul>
+            <button className='addPanier addPanierDetail' onClick={() => addPanier(maPizza)}>Ajouter au panier</button>
         </div>
     );
 };

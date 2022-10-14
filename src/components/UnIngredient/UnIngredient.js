@@ -14,10 +14,8 @@ const UnIngredient = ({checkFn,ingredient}) => {
     };
     return (
         <li className='liIngredient'>
-            <div className='choixIngrendient'>
-                <label className='nomIngredient' htmlFor={ingredient.nom}>{ingredient.nom}</label>
-                <input id={ingredient.nom} className='checkIngredient' type="checkbox" checked={ingredient.checked} onChange={onChangeHandler}/>
-            </div>
+            <label className='nomIngredient' htmlFor={ingredient.nom}>{ingredient.nom}</label>
+            <input id={ingredient.nom} className='checkIngredient' type="checkbox" checked={ingredient.checked} onChange={onChangeHandler}/>
         </li>
     );
 };

@@ -10,17 +10,17 @@ const UnePizzaSaved = ({pizza, index, addPanier}) => {
     };
     return (
         <div className='unePizza'>
-            <Link to={'/pizzas/'+index}>
-                <h3>{unePizza.nom}</h3>
-                <p>{unePizza.prix}$</p>
+            <Link className='lienPizzaDetail' to={'/pizzas/'+index}>
+                <h3 className='nomPizza'>{unePizza.nom}</h3>
                 <div className='imgs'>
                     <PatePizza/>
                     {unePizza.ingredients.map(function(ingredient,i){
                         return(
                             <img key={i} src={src(i)} alt={ingredient.img}></img>
-                        );
-                    })}
+                            );
+                        })}
                 </div>
+                <p className='prix'>{unePizza.prix.toFixed(2)}$</p>
             </Link>
             <button className='addPanier' onClick={() => addPanier(unePizza)}>Ajouter au panier</button>
         </div>

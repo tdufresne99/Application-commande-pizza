@@ -12,9 +12,9 @@ import { useState } from 'react';
 
 
 const lesPizzasDefauts = [
-  {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"], prix: 37, qt:1},
-  {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"], prix: 26, qt:1},
-  {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"], prix: 38, qt:1},
+  {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"], prix: 22.22, qt:1},
+  {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"], prix: 24.10, qt:1},
+  {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"], prix: 23.20, qt:1},
 ];
 
 function App() {
@@ -98,7 +98,7 @@ function App() {
 
     { // Page d'accueil du site: le Titre, la Navigation et la Liste des Pizzas Saved.
       path:'/',
-      element: <Layout nbItems={nbItemPanier}/>,
+      element: <Layout/>,
       children: [ 
         {
           path: 'pizzas',
@@ -106,7 +106,7 @@ function App() {
           children: [
             {
               path: ':pizzaId',
-              element: <UnePizzaDetail lesPizzas={lesPizzasSaved}/>,
+              element: <UnePizzaDetail lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier((JSON.parse(JSON.stringify(newPizza))))}/>,
 
             },
             {

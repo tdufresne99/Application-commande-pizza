@@ -1,4 +1,35 @@
 .login {
+    color: #122604;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-align: left;
-    margin-left: 32px;
+    margin-left: 5%;
+}
+.inputLogin {
+    margin-top: 2%;
+    width: 35%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #BFD698;
+    border: 1px solid #122604;
+}
+.saveLoginBtn {
+    color: rgba(191,214,152,1);
+    display: block;
+    width: 35%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #1F4007;
+    border: 1px solid #122604;
+}
+.saveLoginBtn:hover {
+    background-color: #122604;
+}
+.saveLoginBtn:disabled {
+    color: rgba(191,214,152,0.3);
+    display: block;
+    width: 35%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #122604;
+    border: 1px solid #122604;
 }

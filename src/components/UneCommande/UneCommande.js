@@ -6,7 +6,9 @@ const UneCommande = ({uneCommande}) => {
         <>
             {uneCommande.map((item,i) => {
                 return(
-                    <p key={item.nom+i}>{item.nom} x {item.qt}</p>
+                    <li key={item.nom+i}>
+                        <p>{item.nom} x {item.qt}</p>
+                    </li>
                 );
             })}
         </>

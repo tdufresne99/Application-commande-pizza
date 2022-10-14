@@ -1,0 +1,64 @@
+.titrePizzaPerso{
+    text-align: left;
+    display: block;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.inputPizzaPerso {
+    color: #122604;
+    text-align: left;
+    display: block;
+    width: 50%;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: #E4FFB5;
+    padding: 1%;
+    border-color: #122604;
+}
+h2.titrePizzaPerso {
+    font-size : 300%;
+    color: #122604;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.sauvegarder {
+    margin-left: 5%;
+}
+.annuler {
+    color: rgba(191,214,152,1);
+    width: 25%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #1F4007;
+    border: 1px solid #122604;
+}
+.annuler:hover {
+    background-color: #173005;
+}
+.annuler:disabled {
+    color: rgba(191,214,152,0.3);
+    width: 25%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #122604;
+    border: 1px solid #122604;
+}
+.sauvegarder {
+    color: rgba(191,214,152,1);
+    width: 25%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #1F4007;
+    border: 1px solid #122604;
+}
+.sauvegarder:hover {
+    background-color: #173005;
+}
+.sauvegarder:disabled {
+    color: rgba(191,214,152,0.3);
+    width: 25%;
+    min-height: 32px;
+    padding: 8px;
+    background-color: #122604;
+    border: 1px solid #122604;
+}

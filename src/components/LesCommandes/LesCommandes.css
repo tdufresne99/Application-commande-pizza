@@ -1,0 +1,17 @@
+.titreCommandes {
+    font-size: 3em;
+    font-weight: 800;
+    color: #122604;
+}
+.lesCommandes {
+    margin: 3% 5%;
+    background-color: #EFFF87;
+    padding: 1em;
+    border: 0.5em solid #122604;
+}
+.sousTotalCommandes {
+    margin-left: 2%;
+    text-decoration: overline;
+    font-size: larger;
+    font-weight: 600;
+}

@@ -1,13 +1,54 @@
-.unePizza{
-    margin-bottom: 5%;
+.unePizza {
     display: block;
+    margin-left: 5%;
     text-align: left;
 }
-.imgs{
+.imgs {
     display: grid;
+    width: 30%;
+    filter: drop-shadow(22px 22px 4px rgba(0, 0, 0, 0.3));
 }
 .imgs img {
-    width: 30%;
+    width: 100%;
+    min-width: 100px;
     grid-column: 1;
     grid-row: 1;
+}
+.imgs:hover {
+    width: 32%;
+    transition: 0.2s;
+}
+.addPanier {
+    color: #E4FFB5;
+    filter: drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.3));
+    width: 30%;
+    min-width: 100px;
+    margin: 5% 0;
+    background-color: #1F4007;
+    border: 0px;
+    border-radius: 5px;
+    min-height: 50px;
+}
+.addPanier:hover {
+    width: 32%;
+    min-height: 60px;
+    margin-bottom: 4%;
+    transition: all 0.3s;
+}
+
+.lienPizzaDetail:hover {
+    text-decoration: none;
+}
+h3.nomPizza {
+    text-decoration: underline;
+    font-size: 300%;
+    font-weight: 800;
+    width: 30%;
+    text-align: center;
+}
+.prix {
+    font-size: 550%;
+    font-weight: 200;
+    width: 30%;
+    text-align: center;
 }

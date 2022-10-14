@@ -1,19 +1,53 @@
-.listeIngredients {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .pizzaEditImgs {
     margin: 32px;
     display: grid;
 }
-
+ul.listeIngredients {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 71%;
+    margin-left: 5%;
+    padding: 0;
+    list-style: none;
+    background-color: #1F4007;
+    color: #E4FFB5;
+    padding: 3%;
+    border: 0.2em solid #122604;
+}
+ul.pizzaPrix {
+    justify-self: left;
+    margin-top: 10%;
+    padding: 0;
+    background-color: #CDD973;
+    border: 0.25em solid #122604;
+    padding: 8%;
+}
+.pizzaEditImgs {
+    width: 80%;
+}
 .pizzaEditIngreImg{
-    width: 30%;
+    width: 85%;
     grid-column: 1;
     grid-row: 1;
 }
+.prixIngr{
+    color: #1F4007;
+    font-size: small;
+    font-weight: 500;
+}
 .prixTotal{
-    margin-left: 40px;
+    color: #122604;
+    font-size: x-large;
+    font-weight: 600;
+    text-decoration: overline;
+}
+.ingrContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.ingrHeader {
+    margin-left: 5%;
+    font-size: x-large;
+    font-weight: 700;
 }

@@ -2,9 +2,12 @@
     color: black;
     margin: 32px;
     padding: 32px;
-    background-color: rgba(0, 100, 0, 0.3);
+    background-color: #CDD973;
     border: 3px solid black;
 }
 .unePizzaSaved a {
-    color: black;
+    color: #122604;
+}
+.row {
+    margin: 0;
 }

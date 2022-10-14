@@ -1,11 +1,11 @@
 body {
-  margin: 0;
+  margin: 5%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: yellowgreen;
+  background-color: #638C0B;
 }
 
 code {
@@ -16,17 +16,15 @@ code {
 ul {
   list-style-type: none;
 }
-.thumb {
-  height: 220px;
+a {
+  text-decoration: none;
 }
-
-article {
-  text-align: center;
-  margin-bottom: 25px;
-  overflow: hidden;
-}
-article h1 {
+h1.titre {
+  font-size: 500%;
+  color: #E4FFB5;
+  display: block;
   text-transform: capitalize;
+  margin-left: 5%;
 }
 [ui-view].ng-enter,
 [ui-view].ng-leave {
@@ -46,23 +44,26 @@ article h1 {
   opacity: 0;
 }
 .nav-pills{
-  margin-left: 32px;
+  margin-left: 5%;
+  font-weight: 600;
 }
 .nav-pills>li.active>a{
-  background-color: darkgreen;
+  background-color: #1F4007;
+  color: #CDD973;
+  font-weight: 400;
 }
 .nav-pills>li>a{
-  background-color: darkgreen;
-  color: white;
+  background-color: #1F4007;
+  color: #E4FFB5;
 }
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus{
-  background-color: rgb(140, 200, 140);
-  color: rgb(90, 130, 100);
+  background-color: #BFD698;
+  color: #122604;
 }
 .nav-pills>li.active>a:hover{
-  background-color: rgb(140, 200, 140);
-  color: rgb(90, 130, 100);
+  background-color: #BFD698;
+  color: #122604;
 }
 .nav-pills>li>a:hover{
-  background-color: rgb(40, 122, 35);
+  background-color: #1a3606;
 }

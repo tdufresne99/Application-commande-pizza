@@ -8,17 +8,17 @@ import { useLocation, Navigate } from 'react-router-dom';
 
 
 const lesIngredientsInit = [
-    {nom:"Fromage", img:"fromage", prix: 1.00, checked: false},
+    {nom:"Fromage", img:"fromage", prix: 3.00, checked: false},
     {nom:"Tomates", img:"tomate", prix: 2.00, checked: false},
-    {nom:"Piments Verts", img:"pimentVert", prix: 3.00, checked: false},
-    {nom:"Piments Rouges", img:"pimentRouge", prix: 4.00, checked: false},
-    {nom:"Piments Jaunes", img:"pimentJaune", prix: 5.00, checked: false},
-    {nom:"Olives Vertes", img:"oliveVerte", prix: 6.00, checked: false},
-    {nom:"Olives Noires", img:"oliveNoire", prix: 7.00, checked: false},
-    {nom:"Oignons Rouges", img:"oignonRouge", prix: 8.00, checked: false},
-    {nom:"Oignons Blancs", img:"oignonBlanc", prix: 9.00, checked: false},
-    {nom:"Champignons", img:"champignon", prix: 10.00, checked: false},
-    {nom:"Ananas", img:"ananas", prix: 11.00, checked: false},
+    {nom:"Piments Verts", img:"pimentVert", prix: 2.00, checked: false},
+    {nom:"Piments Rouges", img:"pimentRouge", prix: 2.00, checked: false},
+    {nom:"Piments Jaunes", img:"pimentJaune", prix: 2.00, checked: false},
+    {nom:"Olives Vertes", img:"oliveVerte", prix: 1.50, checked: false},
+    {nom:"Olives Noires", img:"oliveNoire", prix: 1.50, checked: false},
+    {nom:"Oignons Rouges", img:"oignonRouge", prix: 2.25, checked: false},
+    {nom:"Oignons Blancs", img:"oignonBlanc", prix: 2.25, checked: false},
+    {nom:"Champignons", img:"champignon", prix: 3.05, checked: false},
+    {nom:"Ananas", img:"ananas", prix: 2.22, checked: false},
 ];
 const prixBase = 12;
 
@@ -75,34 +75,40 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
         console.log(newPizza);
         addPizza(newPizza);
     };
+    const arrondirPrix = (prix) => {
+        return prix.toFixed(2);
+    }
         
     return (
         <>
             <PizzaPersoSauvegarde reset={resetPizza} save={enregistrerPizza} estSelect={verifierIngredientSelection} nbPizzas={nbPizzas}/>
+            <p className='ingrHeader'>Les Ingrédients</p>
             <ul className='listeIngredients'>
-                    {lesIngredients.map(function(unIngredient, i){
-                        return (
-                            <UnIngredient key={'ing_' + unIngredient.nom} ingredient={unIngredient} checkFn={modifierCheckedIngredient}/>
-                        );
-                    })}
-            </ul>
-            <ul className='pizzaPrix'>
-                <li> <p>Pix base: {prixBase}$</p> </li>
-                {lesIngredients.map((unIngredient) => {
-                    if(unIngredient.checked){
-                        
-                        return (
-                            <li key={'ingp_'+unIngredient.nom}> <p>{unIngredient.nom + ': ' + unIngredient.prix + '$'}</p> </li>
-                        );
-                    }
-                })}
-            </ul>
-            <h4 className='prixTotal'>Prix total: {prixTotal}$</h4>
-            <div className='pizzaEditImgs'>
-                <PatePizza/>
                 {lesIngredients.map(function(unIngredient, i){
-                    return unIngredient.checked ? <img key={unIngredient.nom} className='pizzaEditIngreImg' src={"/Img/pizza_"+ unIngredient.img +".png"} alt={unIngredient.nom}></img> : '';
+                    return (
+                        <UnIngredient key={'ing_' + unIngredient.nom} ingredient={unIngredient} checkFn={modifierCheckedIngredient}/>
+                    );
                 })}
+            </ul>
+            <div className='ingrContainer'>
+                <div className='pizzaEditImgs'>
+                    <PatePizza/>
+                    {lesIngredients.map(function(unIngredient, i){
+                        return unIngredient.checked ? <img key={unIngredient.nom} className='pizzaEditIngreImg' src={"/Img/pizza_"+ unIngredient.img +".png"} alt={unIngredient.nom}></img> : '';
+                    })}
+                </div>
+                <ul className='pizzaPrix'>
+                    <li className='prixIngr'> <p>Pix base + {arrondirPrix(prixBase)}$</p> </li>
+                    {lesIngredients.map((unIngredient) => {
+                        if(unIngredient.checked){
+                
+                            return (
+                                <li className='prixIngr' key={'ingp_'+unIngredient.nom}> <p>{unIngredient.nom + ' + ' + arrondirPrix(unIngredient.prix) + '$'}</p> </li>
+                            );
+                        }
+                    })}
+                    <li className='prixTotal'><p>Prix total = {arrondirPrix(prixTotal)}$</p></li>
+                </ul>
             </div>
         </>
     );

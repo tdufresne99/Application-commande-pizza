@@ -1,4 +1,4 @@
-import '../PizzaPersoNom/PizzaPersoNom.css';
+import '../PizzaPersoNom/PizzaPersoSauvegarde.css';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
