@@ -6,7 +6,7 @@
 ul.listeIngredients {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: 71%;
+    width: 70%;
     margin-left: 5%;
     padding: 0;
     list-style: none;
@@ -24,7 +24,7 @@ ul.pizzaPrix {
     padding: 8%;
 }
 .pizzaEditImgs {
-    width: 80%;
+    width: 70%;
 }
 .pizzaEditIngreImg{
     width: 85%;

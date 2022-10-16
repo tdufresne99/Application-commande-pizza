@@ -15,7 +15,7 @@ const LesCommandes = ({lesCommandes}) => {
                         <ul>
                             <UneCommande uneCommande={uneCommande}/>
                         </ul>
-                        <p className="sousTotalCommandes">Sous-total: {uneCommande.prix}$</p>
+                        <p className="sousTotalCommandes">Sous-total: {uneCommande.prix.toFixed(2)}$</p>
                     </div>
                 );
             })}

@@ -14,7 +14,7 @@ const LesPizzasSaved = ({lesPizzas, addPanier, panier, sousTotalPanier, viderPan
             </div>
             <div className="row">
                 <ul>
-                    {tPizzas.map((unePizza, i) => {
+                    {lesPizzas.map((unePizza, i) => {
                         return(
                             <li key={unePizza.nom} className="unePizzaSaved">
                                 <UnePizzaSaved pizza={unePizza} index={i} addPanier={(newPizza) => addPanier(newPizza)}/>

@@ -2,29 +2,13 @@ import {useState} from 'react';
 import UnIngredient from '../UnIngredient/UnIngredient';
 import PizzaPersoSauvegarde from '../PizzaPersoNom/PizzaPersoSauvegarde';
 import PatePizza from '../PatePizza/PatePizza';
+import ListeIngredients from '../ListeIngredients/ListeIngredients';
 import './PizzaPersoEdit.css';
-import LesPizzasSaved from '../LesPizzasSaved/LesPizzasSaved';
-import { useLocation, Navigate } from 'react-router-dom';
-
-
-const lesIngredientsInit = [
-    {nom:"Fromage", img:"fromage", prix: 3.00, checked: false},
-    {nom:"Tomates", img:"tomate", prix: 2.00, checked: false},
-    {nom:"Piments Verts", img:"pimentVert", prix: 2.00, checked: false},
-    {nom:"Piments Rouges", img:"pimentRouge", prix: 2.00, checked: false},
-    {nom:"Piments Jaunes", img:"pimentJaune", prix: 2.00, checked: false},
-    {nom:"Olives Vertes", img:"oliveVerte", prix: 1.50, checked: false},
-    {nom:"Olives Noires", img:"oliveNoire", prix: 1.50, checked: false},
-    {nom:"Oignons Rouges", img:"oignonRouge", prix: 2.25, checked: false},
-    {nom:"Oignons Blancs", img:"oignonBlanc", prix: 2.25, checked: false},
-    {nom:"Champignons", img:"champignon", prix: 3.05, checked: false},
-    {nom:"Ananas", img:"ananas", prix: 2.22, checked: false},
-];
 const prixBase = 12;
 
 const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
 
-    const [lesIngredients, setLesIngredients] = useState(lesIngredientsInit);
+    const [lesIngredients, setLesIngredients] = useState(ListeIngredients);
 
     const [prixTotal, setPrixTotal] = useState(prixBase);
 
@@ -56,7 +40,7 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
 
     // Réinitialise tous les champs à leur valeur initiale.
     const resetPizza = () => {
-        setLesIngredients(lesIngredientsInit);
+        setLesIngredients(ListeIngredients);
         setPrixTotal(prixBase);
     };
 
@@ -67,11 +51,10 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
         
         lesIngredients.map(unIngredient => {
             if(unIngredient.checked) {
-                lesIngredientsPerso = [...lesIngredientsPerso, unIngredient.nom];
-                lesImgsPerso = [...lesImgsPerso, unIngredient.img];
+                lesIngredientsPerso = [...lesIngredientsPerso, unIngredient];
             };
         });
-        const newPizza = {nom:titrePizza, ingredients:lesIngredientsPerso, imgs:lesImgsPerso, prix:prixTotal, qt:1};
+        const newPizza = {nom:titrePizza, ingredients:lesIngredientsPerso, prix:prixTotal, qt:1};
         console.log(newPizza);
         addPizza(newPizza);
     };
@@ -81,14 +64,13 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
         
     return (
         <>
-            <PizzaPersoSauvegarde reset={resetPizza} save={enregistrerPizza} estSelect={verifierIngredientSelection} nbPizzas={nbPizzas}/>
             <p className='ingrHeader'>Les Ingrédients</p>
             <ul className='listeIngredients'>
                 {lesIngredients.map(function(unIngredient, i){
                     return (
                         <UnIngredient key={'ing_' + unIngredient.nom} ingredient={unIngredient} checkFn={modifierCheckedIngredient}/>
-                    );
-                })}
+                        );
+                    })}
             </ul>
             <div className='ingrContainer'>
                 <div className='pizzaEditImgs'>
@@ -101,14 +83,15 @@ const PizzaPersoEdit = ({addPizza, nbPizzas}) => {
                     <li className='prixIngr'> <p>Pix base + {arrondirPrix(prixBase)}$</p> </li>
                     {lesIngredients.map((unIngredient) => {
                         if(unIngredient.checked){
-                
+                            
                             return (
                                 <li className='prixIngr' key={'ingp_'+unIngredient.nom}> <p>{unIngredient.nom + ' + ' + arrondirPrix(unIngredient.prix) + '$'}</p> </li>
-                            );
-                        }
-                    })}
+                                );
+                            }
+                        })}
                     <li className='prixTotal'><p>Prix total = {arrondirPrix(prixTotal)}$</p></li>
                 </ul>
+                <PizzaPersoSauvegarde reset={resetPizza} save={enregistrerPizza} estSelect={verifierIngredientSelection} nbPizzas={nbPizzas}/>
             </div>
         </>
     );

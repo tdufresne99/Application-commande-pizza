@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import '../UnePizzaDetail/UnePizzaDetail.css';
 
 const UnePizzaDetail = ({lesPizzas, addPanier}) => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({top: 390, left: 0, behavior: 'smooth'});
     const {pizzaId} = useParams();
     console.log(pizzaId);
     const maPizza = lesPizzas[pizzaId];
     console.log(maPizza);
     const src = (i) => {
-        return "../Img/pizza_"+maPizza.imgs[i]+".png";
+        // console.log(maPizza.ingredients[i].img);
+        return "../Img/pizza_" + maPizza.ingredients[i].img + ".png";
     };
 
     return (
@@ -18,16 +19,16 @@ const UnePizzaDetail = ({lesPizzas, addPanier}) => {
             <p className='prix'>{maPizza.prix.toFixed(2)}$</p>
             <div className='imgs'>
                 <PatePizza/>
-                {maPizza.ingredients.map(function(ingredient,i){
+                {maPizza.ingredients.map((ingredient,i) => {
                     return(
-                        <img key={i} src={src(i)} alt={ingredient.img}></img>
-                    );
+                        <img key={ingredient.nom+i} src={src(i)} alt={ingredient.img}></img>
+                );
                 })}
             </div>
             <ul className='ingrListeDetail'>
-                {maPizza.ingredients.map(function(ingredient){
+                {maPizza.ingredients.map((ingredient)=>{
                     return(
-                        <li key={ingredient}>{ingredient}</li>
+                        <li key={ingredient.nom}>{ingredient.nom}</li>
                     );
                 })}
             </ul>

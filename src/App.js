@@ -1,26 +1,42 @@
 import './App.css';
 import Titre from './components/Titre/Titre';
 import Login from './components/Login/Login';
-import Panier from './components/Panier/Panier';
 import LesCommandes from './components/LesCommandes/LesCommandes';
 import LesPizzasSaved, {lesPizzasSavedLoader} from './components/LesPizzasSaved/LesPizzasSaved';
 import Layout from './components/Layout/Layout';
 import PizzaPersoEdit from './components/PizzaPersoEdit/PizzaPersoEdit';
 import UnePizzaDetail from './components/UnePizzaDetail/UnePizzaDetail';
+import ListeIngredients from './components/ListeIngredients/ListeIngredients';
 import { RouterProvider, createBrowserRouter, Navigate, Outlet, useNavigate, redirect } from 'react-router-dom';
 import { useState } from 'react';
 
-
-const lesPizzasDefauts = [
-  {nom:"La Pizza du Jour", ingredients:["Fromage", "Tomates", "Piments Verts", "Piments Rouges", "Olives Vertes", "Oignons Blancs"], imgs:["fromage", "tomate", "pimentVert", "pimentRouge", "oliveVerte", "oignonBlanc"], prix: 22.22, qt:1},
-  {nom:"L'écarlate", ingredients:["Tomates", "Piments Rouges", "Oignons Rouges"], imgs:["tomate", "pimentRouge", "oignonRouge"], prix: 24.10, qt:1},
-  {nom:"La Golden Pizza", ingredients:["Fromage", "Piments Jaunes", "Oignons Blancs", "Ananas"], imgs:["fromage", "pimentJaune", "oignonBlanc", "ananas"], prix: 23.20, qt:1},
-];
-
 function App() {
-
+  const creerPizzaAleatoire = () => {
+    let lesPizzasInit = [];
+    for (let i = 0; i < 3; i++) {
+      let ingredientsPossibles = ListeIngredients;
+      console.log(ingredientsPossibles);
+      let ingredientsChoisis = [];
+      let prix = 0;
+      ingredientsPossibles.map((ingredient, i) => {
+        const pourcent = Math.floor(Math.random() * 100);
+        if(pourcent >= 50 || i === 0) {
+          ingredientsChoisis = [...ingredientsChoisis, ingredient];
+          prix += ingredient.prix;
+        }
+      })
+      const unePizza = {
+        nom: 'Recommandation du chef #'+(i+1),
+        ingredients: ingredientsChoisis,
+        prix: prix + 12,
+        qt: 1,
+      }
+      lesPizzasInit.push(unePizza);
+    }
+    return lesPizzasInit;
+  };
   // Liste des pizza sauvegardées (state)
-  const [lesPizzasSaved, setLesPizzasSaved] = useState(lesPizzasDefauts);
+  const [lesPizzasSaved, setLesPizzasSaved] = useState(creerPizzaAleatoire);
 
   const savePizza = (newPizza) => {
     console.log(newPizza);
@@ -70,6 +86,7 @@ function App() {
     newCommande.prix = sousTotalPanier;
     setLesCommandes(currentCommandes => [...currentCommandes, newCommande]);
     viderPanier();
+    
   };
 
 
@@ -102,11 +119,11 @@ function App() {
       children: [ 
         {
           path: 'pizzas',
-          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier((JSON.parse(JSON.stringify(newPizza))))} panier={lePanier} sousTotalPanier={sousTotalPanier} viderPanier={()=>viderPanier()} passerCommande={(commande)=>passerCommande(commande)}/>,
+          element:  <LesPizzasSaved lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier((newPizza))} panier={lePanier} sousTotalPanier={sousTotalPanier} viderPanier={()=>viderPanier()} passerCommande={(commande)=>passerCommande(commande)}/>,
           children: [
             {
               path: ':pizzaId',
-              element: <UnePizzaDetail lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier((JSON.parse(JSON.stringify(newPizza))))}/>,
+              element: <UnePizzaDetail lesPizzas={lesPizzasSaved} addPanier={(newPizza) => updatePanier(newPizza)}/>,
 
             },
             {
